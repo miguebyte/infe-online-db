@@ -1,5 +1,5 @@
-CREATE DATABASE IF NOT EXISTS `infeonline`;
-USE `infeonline`;
+CREATE DATABASE IF NOT EXISTS `infeonline_db`;
+USE `infeonline_db`;
 
 DROP TABLE IF EXISTS `tema_rama`;
 DROP TABLE IF EXISTS `rama_estadistica`;
