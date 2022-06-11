@@ -6,37 +6,35 @@ DROP TABLE IF EXISTS `rama_estadistica`;
 DROP TABLE IF EXISTS `mensaje_cliente`;
 DROP TABLE IF EXISTS `estado`;
 DROP TABLE IF EXISTS `estado_mensaje`;
+DROP TABLE IF EXISTS `usuario`;
+DROP TABLE IF EXISTS `tipo_usuario`;
 
 --
 -- Table structure for table `estado`
 --
 CREATE TABLE `estado` (
-  `id` int NOT NULL,
+  `id` int(11) NOT NULL,
   `descripcion` varchar(45) DEFAULT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
-
-INSERT INTO `estado` VALUES (1,'Habilitado'),(2,'Deshabilitado');
 
 
 --
 -- Table structure for table `estado_mensaje`
 --
 CREATE TABLE `estado_mensaje` (
-  `id` int NOT NULL,
+  `id` int(11) NOT NULL,
   `descripcion` varchar(45) DEFAULT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
-
-INSERT INTO `estado_mensaje` VALUES (1,'No Gestionado'),(2,'Asignado'),(3,'Gestionado'),(4,'Anulado');
 
 
 --
 -- Table structure for table `mensaje_cliente`
 --
 CREATE TABLE `mensaje_cliente` (
-  `id` int NOT NULL,
-  `estado_mensaje_id` int NOT NULL,
+  `id` int(11) NOT NULL,
+  `estado_mensaje_id` int(11) NOT NULL,
   `nombre` varchar(120) DEFAULT NULL,
   `correo` varchar(100) DEFAULT NULL,
   `asunto` varchar(45) DEFAULT NULL,
@@ -50,8 +48,8 @@ CREATE TABLE `mensaje_cliente` (
 -- Table structure for table `rama_estadistica`
 --
 CREATE TABLE `rama_estadistica` (
-  `id` int NOT NULL,
-  `estado_id` int NOT NULL,
+  `id` int(11) NOT NULL,
+  `estado_id` int(11) NOT NULL,
   `descripcion` varchar(45) DEFAULT NULL,
   `titulo` varchar(45) DEFAULT NULL,
   `ruta_url` varchar(120) DEFAULT NULL,
@@ -61,16 +59,13 @@ CREATE TABLE `rama_estadistica` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 
-INSERT INTO `rama_estadistica` VALUES (1,1,'Descriptiva','ESTADÍSTICA DESCRIPTIVA','/descriptiva'),(2,1,'Inferencial','ESTADÍSTICA INFERENCIAL','/inferencial');
-
-
 --
 -- Table structure for table `tema_rama`
 --
 CREATE TABLE `tema_rama` (
-  `id` int NOT NULL,
-  `rama_estadistica_id` int NOT NULL,
-  `estado_id` int NOT NULL,
+  `id` int(11) NOT NULL,
+  `rama_estadistica_id` int(11) NOT NULL,
+  `estado_id` int(11) NOT NULL,
   `titulo` varchar(45) DEFAULT NULL,
   `ruta_url` varchar(120) DEFAULT NULL,
   PRIMARY KEY (`id`),
@@ -80,4 +75,35 @@ CREATE TABLE `tema_rama` (
   CONSTRAINT `fk_tema_rama_rama_estadistica1` FOREIGN KEY (`rama_estadistica_id`) REFERENCES `rama_estadistica` (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
-INSERT INTO `tema_rama` VALUES (1,2,1,'PRUEBA DE INDEPENDENCIA','/prueba-independencia'),(2,2,1,'PRUEBA DE HIPÓTESIS PARA LA MEDIA POBLACIONAL','/prueba-hipotesis-media-poblacional');
+
+--
+-- Table structure for table `tipo_usuario`
+--
+CREATE TABLE `tipo_usuario` (
+  `id` int(11) NOT NULL,
+  `estado_id` int(11) DEFAULT NULL,
+  `descripcion` varchar(45) DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  KEY `estado_id_fk_idx` (`estado_id`),
+  CONSTRAINT `estado_id_fk` FOREIGN KEY (`estado_id`) REFERENCES `estado` (`id`)
+) /*!50100 TABLESPACE `innodb_system` */ ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+
+--
+-- Table structure for table `usuario`
+--
+CREATE TABLE `usuario` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `estado_id` int(11) DEFAULT NULL,
+  `tipo_usuario_id` int(11) DEFAULT NULL,
+  `codigo` varchar(45) DEFAULT NULL,
+  `contrasenia` varchar(50) DEFAULT NULL,
+  `nombre` varchar(120) DEFAULT NULL,
+  `correo` varchar(100) DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `codigo_UNIQUE` (`codigo`),
+  KEY `tipo_usuario_id_fk_idx` (`tipo_usuario_id`),
+  KEY `estado_id_fk_idx` (`estado_id`),
+  CONSTRAINT `estado_usuario_id_fk` FOREIGN KEY (`estado_id`) REFERENCES `estado` (`id`),
+  CONSTRAINT `tipo_usuario_id_fk` FOREIGN KEY (`tipo_usuario_id`) REFERENCES `tipo_usuario` (`id`)
+) /*!50100 TABLESPACE `innodb_system` */ ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
