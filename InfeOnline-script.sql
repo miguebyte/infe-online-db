@@ -4,10 +4,10 @@ USE `infeonline_db`;
 DROP TABLE IF EXISTS `tema_rama`;
 DROP TABLE IF EXISTS `rama_estadistica`;
 DROP TABLE IF EXISTS `mensaje_cliente`;
-DROP TABLE IF EXISTS `estado`;
-DROP TABLE IF EXISTS `estado_mensaje`;
 DROP TABLE IF EXISTS `usuario`;
+DROP TABLE IF EXISTS `estado_mensaje`;
 DROP TABLE IF EXISTS `tipo_usuario`;
+DROP TABLE IF EXISTS `estado`;
 
 --
 -- Table structure for table `estado`

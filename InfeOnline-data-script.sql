@@ -1,4 +1,3 @@
-
 --
 -- Table data for table `estado`
 --
@@ -13,12 +12,12 @@ INSERT INTO `estado_mensaje` VALUES (1,'No Gestionado'),(2,'Asignado'),(3,'Gesti
 --
 -- Table data for table `rama_estadistica`
 --
-INSERT INTO `rama_estadistica` VALUES (1,1,'Descriptiva','ESTADÍSTICA DESCRIPTIVA','/descriptiva'),(2,1,'Inferencial','ESTADÍSTICA INFERENCIAL','/inferencial');
+INSERT INTO `rama_estadistica` VALUES (1,2,'Descriptiva','ESTADÍSTICA DESCRIPTIVA','/descriptiva'),(2,1,'Inferencial','ESTADÍSTICA INFERENCIAL','/inferencial');
 
 --
 -- Table data for table `tema_rama`
 --
-INSERT INTO `tema_rama` VALUES (1,2,1,'PRUEBA DE INDEPENDENCIA','/prueba-independencia'),(2,2,1,'PRUEBA DE HIPÓTESIS PARA LA MEDIA POBLACIONAL','/prueba-hipotesis-media-poblacional');
+INSERT INTO `tema_rama` VALUES (1,2,1,'PRUEBA DE INDEPENDENCIA','/prueba-independencia'),(2,2,2,'PRUEBA DE HIPÓTESIS PARA LA MEDIA POBLACIONAL','/prueba-hipotesis-media-poblacional');
 
 
 --
