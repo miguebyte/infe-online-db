@@ -33,7 +33,7 @@ CREATE TABLE `estado_mensaje` (
 -- Table structure for table `mensaje_cliente`
 --
 CREATE TABLE `mensaje_cliente` (
-  `id` int(11) NOT NULL,
+  `id` int(11) NOT NULL AUTO_INCREMENT,
   `estado_mensaje_id` int(11) NOT NULL,
   `nombre` varchar(120) DEFAULT NULL,
   `correo` varchar(100) DEFAULT NULL,

@@ -17,7 +17,7 @@ INSERT INTO `rama_estadistica` VALUES (1,2,'Descriptiva','ESTADÍSTICA DESCRIPTI
 --
 -- Table data for table `tema_rama`
 --
-INSERT INTO `tema_rama` VALUES (1,2,1,'PRUEBA DE INDEPENDENCIA','/prueba-independencia'),(2,2,2,'PRUEBA DE HIPÓTESIS PARA LA MEDIA POBLACIONAL','/prueba-hipotesis-media-poblacional');
+INSERT INTO `tema_rama` VALUES (1,2,1,'PRUEBA DE INDEPENDENCIA','/prueba-de-independencia'),(2,2,2,'PRUEBA DE HIPÓTESIS PARA LA MEDIA POBLACIONAL','/prueba-hipotesis-media-poblacional');
 
 
 --
